@@ -3,16 +3,18 @@ var saveButtons = document.querySelectorAll(".saveBtn");
 var today = moment();
 var currentHour = moment().hour();
 
+// Displays the current date.
 $("#currentDay").text(today.format("MMM Do, YYYY"));
 
+// Text area changes color based off the past, present, and future.
 textElements.forEach((input) => {
   if (input.id < currentHour) {
-    input.style.backgroundColor = "gray";
+    input.style.backgroundColor = "rgb(220, 220, 220)";
     console.log(input.id);
   } else if (input.id > currentHour) {
-    input.style.backgroundColor = "green";
+    input.style.backgroundColor = "rgb(135, 255, 135)";
   } else {
-    input.style.backgroundColor = "red";
+    input.style.backgroundColor = "rgb(209, 73, 91)";
   }
 });
 
@@ -29,7 +31,6 @@ saveButtons.forEach((saveButton, i) => {
         singleTextArea = textArea;
       }
     });
-
     localStorage.setItem("Save-Event", JSON.stringify(storeText));
   });
   textElements[i].value = JSON.parse(localStorage.getItem("Save-Event"))[i];
